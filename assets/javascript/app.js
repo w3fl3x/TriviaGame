@@ -72,7 +72,7 @@ $(document).ready(function (){
         wrongChoices = 0;
         unAnswered = 0;
         //first question
-        newQuestion()
+        newQuestion();
     };
 
     //Counter
@@ -105,7 +105,7 @@ $(document).ready(function (){
         for (var i = 0; i < 4; i++) {
             var choices = $('<div');
             choices.text(Questions[currentQuestion].answerList[i]);
-            choices.attr({'data-index: i'});
+            choices.attr({'data-index': i});
             choices.addClass('thisChoice');
             $('.answerList').append(choices);
         };
@@ -175,5 +175,16 @@ $(document).ready(function (){
         $('#startAgainBtn').addClass('reset');
         $('#startAgainBtn').show();
         $('#startAgainBtn').html('Restart?');
-    }
+    };
+
+    //process
+    $('.startbutton').on('click', function() {
+        $(this).hide();
+        startGame();
+    });
+    //reset button
+    $('#startAgainBtn').on('click', function() {
+        $(this).hide();
+        startGame();
+    });
 });
