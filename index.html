@@ -14,6 +14,8 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
     <link href="https://fonts.googleapis.com/css?family=Boogaloo|Luckiest+Guy|Ultra&display=swap" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
     <h1>Tasty Trivial Trivia!</h1>
@@ -22,6 +24,26 @@
         <div class="startbutton">
             <button type="button" class="btn btn-primary btn-lg">Start Game!</button>
         </div>
+
+        <div id="game-play">
+            <div id="timer"></div>
+            <div id="currentQuestion"></div>
+            <div id="question"></div>
+            <div id="answerList"></div>
+
+            <div id="finalMessage"></div>
+            <div id="correctAnswers"></div>
+            <div id="wrongAnswers"></div>
+            <div id="unAnswered"></div>
+            <div button class="btn btn-primary btn-lg" id="startAgainBtn"></div>
+        </div>
+
+        <div id="message">
+            <h2>Instructions:</h2>
+            <p>Answers each trivia questions within 15 seconds to see if you know your food facts!</p>
+        </div>
+
+        <div id="correctedAnswer"></div>
     </div>
 
     <script src="assets/javascript/app.js"></script>
