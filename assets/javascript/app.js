@@ -78,8 +78,102 @@ $(document).ready(function (){
     //Counter
     function countDown() {
         sec = 15;
-        $('#timer').html('<p> Time Left: ' + sec + '</p>');
+        $('#timer').html('<p>Time Left: ' + sec + '</p>');
         answered = true;
         time = setInterval(showCountDown, 1000);
+    };
+
+    function showCountDown() {
+        sec--;
+        $('#timer').html('<p>Time Left: ' + sec + '</p>');
+        if (sec < 1) {
+            clearInterval(time);
+            answered = false;
+            answerPage();
+        };
+    };
+
+    //New Question function
+    function newQuestion() {
+        $('#message').empty();
+        $('#correctedAnswer').empty();
+        answer = true;
+
+        //set up new question
+        $('#currentQuestion').html('Question #' + (currentQuestion + 1) + '/' + Questions.length);
+        $('#question').html('<p>' + Questions[currentQuestion].question + '</p>');
+        for (var i = 0; i < 4; i++) {
+            var choices = $('<div');
+            choices.text(Questions[currentQuestion].answerList[i]);
+            choices.attr({'data-index: i'});
+            choices.addClass('thisChoice');
+            $('.answerList').append(choices);
+        };
+        countDown();
+
+        //Clicking an answer will pause time and show answer page
+        $('.thisChoice').on('click', function() {
+            userSelect = $(this).data('index');
+            clearInterval(time);
+            answerPage();
+        });
+    };
+
+    //Answer page
+    function answerPage() {
+        //clear question page
+        $('#currentQuestion').empty();
+        $('.thischoice').empty();
+        $('#question').empty();
+
+        //hold answer
+        var rightAnswerText = Questions[currentQuestion].answerList[Questions[currentQuestion].answer];
+        //correct answer array
+        var rightAnswerIndex = Questions[currentQuestion].answer;
+
+        //check for correct, wrong or unanswered
+        //if choose correct answer
+        if ((userSelect == rightAnswerIndex) && (answered == true)) {
+            //win increase by 1
+            correctChoices++;
+            //correct message displays on screen
+            $('#message').html(messages.correct);
+            //if wrong answer 
+        } else if ((userSelect != rightAnswerIndex) && (answered == true)) {
+            //wrong answer goes up by 1
+            wrongChoices++;
+            //correct answer display
+            $('#correctedAnswer').html('The correct answer was: ' + rightAnswerText);
+        } else {
+            unAnswered++;
+            $('#message').html(messages.endTime);
+            $('#correctedAnswer').html('The Correct answer was: ' + rightAnswerText);
+            answered = true;
+        };
+        //once last question is completed display score
+        if (currentQuestion == (Questions.length - 1)) {
+            setTimeout(scoreBoard, 1000)
+        } else {
+            currentQuestion++;
+            setTimeout(newQuestion, 2000);
+        };
+    };
+
+    //end game score
+    function scoreBoard() {
+        //clear time and correctedAnswer
+        $('#timer').empty();
+        $('#message').empty();
+        $('#correctedAnswer').empty();
+        //display message
+        $('#finalMessage').html(messages.finished);
+        //final results
+        $('#correctAnswers').html('Correct Answers: ' + correctChoices);
+        $('#wrongAnswers').html('Wrong Answers' + wrongChoices);
+        $('#unAnswered').html('Unanswered: ' + unAnswered);
+        //reset game
+        $('#startAgainBtn').addClass('reset');
+        $('#startAgainBtn').show();
+        $('#startAgainBtn').html('Restart?');
     }
 });
