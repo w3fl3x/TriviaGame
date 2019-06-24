@@ -1,4 +1,17 @@
 body {
     background: url("../images/food.png");
     text-align: center;
+    font-family: 'Luckiest Guy', cursive;
 }
+
+h1 {
+    font-family: 'Boogaloo', serif;
+    font-size: 60px;
+    color: white;
+    text-align: center;
+}
+
+.container {
+    text-align: center;
+}
+
