@@ -4,9 +4,9 @@ body {
     font-family: 'Luckiest Guy', cursive;
 }
 
-h1 {
+#title {
     font-family: 'Boogaloo', serif;
-    font-size: 60px;
+    font-size: 80px;
     color: white;
     text-align: center;
 }
