@@ -37,5 +37,26 @@ $(document).ready(function (){
         answer: 3
     }];
 
+    var currentQuestion; var correctAnswer; var incorrectAnswer; var unanswered; var seconds; var time; var answered; var userSelect;
+    var messages = {
+        correct: "Yes, that's correct!",
+        incorrect: "No, that's not it.",
+        endTime: "Out of time!",
+        finished: "Lets see how well you did."
+    }
+
+    $('#startBtn').on('click', function() {
+        $(this).hide();
+        newGame();
+    });
+
+    $('#startOverBtn').on('click', function() {
+        $(this).hide();
+        newGame();
+    });
+
+    function newGame() {
+        $('')
+    }
     
 });
