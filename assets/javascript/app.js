@@ -38,14 +38,7 @@ $(document).ready(function (){
     }];
 
     var imgArray = ['question1', 'question2', 'question3', 'question4', 'question5', 'question6', 'question7'];
-    var currentQuestion; 
-    var correctAnswer; 
-    var incorrectAnswer; 
-    var unanswered; 
-    var seconds; 
-    var time; 
-    var answered; 
-    var userSelect;
+    var currentQuestion; var correctAnswer; var incorrectAnswer; var unanswered; var seconds; var time; var answered; var userSelect;
     var messages = {
         correct: "Yes, that's correct!",
         incorrect: "No, that's not it.",
@@ -83,7 +76,7 @@ $(document).ready(function (){
         answered = true;
 
         //sets up new questions and answerList
-        $('#currentQuestion').html('Question #' + (currentQuestion + 1) + '/' +triviaQuestions.length);
+        $('#currentQuestion').html('Question #' + (currentQuestion + 1) + '/' + triviaQuestions.length);
         $('.question').html('<p>' + triviaQuestions[currentQuestion].question + '</p>');
         for (var i = 0; i < 4; i++) {
             var choices = $('<div>');
@@ -103,7 +96,7 @@ $(document).ready(function (){
     };
 
     function countdown() {
-        seconds = 3;
+        seconds = 15;
         $('#timeLeft').html('<p>Time Remaining: ' + seconds + '</p>');
         answered = true;
         time = setInterval(showCountdown, 1000);
@@ -131,6 +124,7 @@ $(document).ready(function (){
         if ((userSelect == rightAnswerIndex) && (answered == true)) {
             correctAnswer++;
             $('#message').html(messages.correct);
+            console.log(rightAnswerIndex)
         } else if ((userSelect != rightAnswerIndex) && (answered == true)) {
             incorrectAnswer++;
             $('#message').html(messages.incorrect);
@@ -155,6 +149,7 @@ $(document).ready(function (){
         $('#message').empty();
         $('#correctedAnswer').empty();
         $('#image').empty();
+
         $('#finalMessage').html(messages.finished);
         $('#correctAnswers').html('Correct Answers: ' + correctAnswer);
         $('#incorrectAnswers').html('Incorrect Answers: ' + incorrectAnswer);
