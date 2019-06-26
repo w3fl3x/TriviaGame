@@ -82,7 +82,7 @@ $(document).ready(function (){
             var choices = $('<div>');
             choices.text(triviaQuestions[currentQuestion].answerList[i]);
             choices.attr({'data-index': i});
-            choices.addclass('thisChoice');
+            choices.addClass('thisChoice');
             $('.answerList').append(choices);
         }
         
@@ -144,7 +144,17 @@ $(document).ready(function (){
     }
 
     function scoreboard() {
-        
+        $('#timeLeft').empty();
+        $('#message').empty();
+        $('#correctedAnswer').empty();
+        $('#image').empty();
+        $('#finalMessage').html(messages.finished);
+        $('#correctAnswers').html('Correct Answers: ' + correctAnswer);
+        $('#incorrectAnswers').html('Incorrect Answers: ' + incorrectAnswer);
+        $('#unanswered').html('Unanswered: ' + unanswered);
+        $('#startOverBtn').addClass('reset');
+        $('#startOverBtn').show();
+        $('#startOverBtn').html('Start Over?');
     }
     
 });

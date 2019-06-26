@@ -15,7 +15,7 @@ body {
     text-align: center;
 }
 
-#message,
+#instruction,
 #game-play {
     font-family: 'Luckiest Guy', cursive;
     font-size: 20px;
