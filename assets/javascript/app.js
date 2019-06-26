@@ -24,7 +24,7 @@ $(document).ready(function (){
         //Question 5
         question: "What was the first food consumed on the moon in the Apollo 11 moon mission?",
         answerList: ["Ice Cream", "Ham", "Cheese", "Turkey"],
-        answer: 0
+        answer: 3
     }, {
         //Question 6
         question: "An average ear of corn has even number of rows, usually how many rows?",
