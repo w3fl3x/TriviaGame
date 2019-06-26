@@ -20,3 +20,28 @@ body {
     font-family: 'Luckiest Guy', cursive;
     font-size: 20px;
 }
+
+.btn-primary, .reset {
+    background-color: #4b2383;
+    color: white;
+    padding: 10px;
+}
+
+.btn-primary:hover, .reset:hover {
+    background-color: #8941ee;
+}
+
+#startOverBtn {
+    margin: auto;
+    width: 200px;
+}
+
+.thisChoice:hover {
+    background-color: #4b2383;
+    color: white;
+    padding: 10px;
+}
+
+#image {
+    margin: 20px;
+}
