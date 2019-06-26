@@ -17,7 +17,7 @@ $(document).ready(function (){
         answer: 0
     }, {
         //Question 4
-        question: 'What breakfast food gets it name from the German word meaning "stirrup"?',
+        question: "What breakfast food gets it name from the German word meaning stirrup?",
         answerList: ["Pancake", "Waffle", "Bagel", "Bacon"],
         answer: 2
     }, {
@@ -38,7 +38,14 @@ $(document).ready(function (){
     }];
 
     var imgArray = ['question1', 'question2', 'question3', 'question4', 'question5', 'question6', 'question7'];
-    var currentQuestion; var correctAnswer; var incorrectAnswer; var unanswered; var seconds; var time; var answered; var userSelect;
+    var currentQuestion; 
+    var correctAnswer; 
+    var incorrectAnswer; 
+    var unanswered; 
+    var seconds; 
+    var time; 
+    var answered; 
+    var userSelect;
     var messages = {
         correct: "Yes, that's correct!",
         incorrect: "No, that's not it.",
@@ -46,7 +53,7 @@ $(document).ready(function (){
         finished: "Lets see how well you did."
     }
 
-    $('#startBtn').on('click', function() {
+    $('.btn').on('click', function() {
         $(this).hide();
         newGame();
     });
@@ -67,7 +74,7 @@ $(document).ready(function (){
         incorrectAnswer = 0;
         unanswered = 0;
         newQuestion();
-    }
+    };
 
     function newQuestion() {
         $('#message').empty();
@@ -81,10 +88,10 @@ $(document).ready(function (){
         for (var i = 0; i < 4; i++) {
             var choices = $('<div>');
             choices.text(triviaQuestions[currentQuestion].answerList[i]);
-            choices.attr({'data-index': i});
+            choices.attr({'data-index': i });
             choices.addClass('thisChoice');
             $('.answerList').append(choices);
-        }
+        };
         
         countdown();
         //clicking an answer will pause the time and setup answerPage
@@ -93,14 +100,14 @@ $(document).ready(function (){
             clearInterval(time);
             answerPage();
         });
-    }
+    };
 
     function countdown() {
-        seconds = 15;
+        seconds = 3;
         $('#timeLeft').html('<p>Time Remaining: ' + seconds + '</p>');
         answered = true;
         time = setInterval(showCountdown, 1000);
-    }
+    };
 
     function showCountdown() {
         seconds--;
@@ -109,8 +116,8 @@ $(document).ready(function (){
             clearInterval(time);
             answered = false;
             answerPage();
-        }
-    }
+        };
+    };
 
     function answerPage() {
         $('#currentQuestion').empty();
@@ -123,16 +130,16 @@ $(document).ready(function (){
         //checks for correct, incorrect or unanswered
         if ((userSelect == rightAnswerIndex) && (answered == true)) {
             correctAnswer++;
-            $('#message').html(message.correct);
+            $('#message').html(messages.correct);
         } else if ((userSelect != rightAnswerIndex) && (answered == true)) {
+            incorrectAnswer++;
             $('#message').html(messages.incorrect);
-            $('#correctedAnswer').html('The correct answer was: ' + rightAnswerIndex);
-            answer = true;
+            $('#correctedAnswer').html('The correct answer was: ' + rightAnswerText);
         } else {
             unanswered++;
             $('#message').html(messages.endTime);
-            $('#correctedAnswer').html('The correct answer was: ' + rightAnswerIndex);
-            answer = true;
+            $('#correctedAnswer').html('The correct answer was: ' + rightAnswerText);
+            answered = true;
         }
 
         if (currentQuestion == (triviaQuestions.length - 1)) {
@@ -140,8 +147,8 @@ $(document).ready(function (){
         } else {
             currentQuestion++;
             setTimeout(newQuestion, 5000);
-        }
-    }
+        };
+    };
 
     function scoreboard() {
         $('#timeLeft').empty();
@@ -155,6 +162,6 @@ $(document).ready(function (){
         $('#startOverBtn').addClass('reset');
         $('#startOverBtn').show();
         $('#startOverBtn').html('Start Over?');
-    }
+    };
     
 });

@@ -36,6 +36,11 @@ body {
     width: 200px;
 }
 
+.thisChoice {
+    margin: auto;
+    width: 300px;
+}
+
 .thisChoice:hover {
     background-color: #4b2383;
     color: white;
