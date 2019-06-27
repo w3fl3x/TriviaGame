@@ -89,7 +89,7 @@ $(document).ready(function (){
         countdown();
         //clicking an answer will pause the time and setup answerPage
         $('.thisChoice').on('click', function() {
-            userSelect = $('this').data('index');
+            userSelect = $(this).data('index');
             clearInterval(time);
             answerPage();
         });
@@ -121,10 +121,9 @@ $(document).ready(function (){
         var rightAnswerIndex = triviaQuestions[currentQuestion].answer;
         $('#image').html('<img src="assets/images/' + imgArray[currentQuestion] + '.jpg" width = "400px">');
         //checks for correct, incorrect or unanswered
-        if ((userSelect == rightAnswerIndex) && (answered == true)) {
+        if ((userSelect === rightAnswerIndex) && (answered === true)) {
             correctAnswer++;
             $('#message').html(messages.correct);
-            console.log(rightAnswerIndex)
         } else if ((userSelect != rightAnswerIndex) && (answered == true)) {
             incorrectAnswer++;
             $('#message').html(messages.incorrect);
